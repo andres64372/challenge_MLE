@@ -1,13 +1,12 @@
 name: 'Continuous Delivery'
 
 on:
-  workflow_run:
-    workflows: ["Continuous Integration"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest  
     steps:
       - name: Checkout
