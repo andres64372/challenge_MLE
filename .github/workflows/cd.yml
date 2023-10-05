@@ -29,3 +29,6 @@ jobs:
 
       - name: Deploy to App Engine
         uses: google-github-actions/deploy-appengine@v1
+
+      - name: Stress test
+        run: locust -f tests/stress/api_stress.py --print-stats --html reports/stress-test.html --run-time 60s --headless --users 100 --spawn-rate 1 -H https://retropixel-396819.uc.r.appspot.com
