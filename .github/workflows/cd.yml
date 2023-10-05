@@ -25,7 +25,7 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           workload_identity_provider: projects/988775701050/locations/global/workloadIdentityPools/app-engine/providers/github
-          service_account: app-engine@retropixel-396819.iam.gserviceaccount.com
+          service_account: retropixel-396819@appspot.gserviceaccount.com
 
       - name: Deploy to App Engine
         uses: google-github-actions/deploy-appengine@v1
