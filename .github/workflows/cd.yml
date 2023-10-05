@@ -7,7 +7,12 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'  
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,11 +21,11 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Authenticate to google
+      - name: Authenticate to Google
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: 'projects/988775701050/locations/global/workloadIdentityPools/app-engine/providers/github'
-          service_account: 'app-engine@retropixel-396819.iam.gserviceaccount.com'
+          workload_identity_provider: projects/988775701050/locations/global/workloadIdentityPools/app-engine/providers/github
+          service_account: app-engine@retropixel-396819.iam.gserviceaccount.com
 
       - name: Deploy to App Engine
         uses: google-github-actions/deploy-appengine@v1
