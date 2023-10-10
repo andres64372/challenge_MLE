@@ -1,10 +1,9 @@
 import fastapi
 from pydantic import BaseModel
 from typing import List
-
-from joblib import load
 import pandas as pd
 
+from .model import DelayModel
 from .utils import top_10_features
 
 class Flight(BaseModel):
@@ -15,7 +14,8 @@ class Flight(BaseModel):
 class Flights(BaseModel):
     flights: List[Flight]
 
-model = load('./challenge/model.joblib')
+model = DelayModel()
+model.load()
 
 app = fastapi.FastAPI()  
 

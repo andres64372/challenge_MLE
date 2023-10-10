@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import xgboost as xgb
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from joblib import load
 
 from typing import Tuple, Union, List
 
@@ -57,3 +57,6 @@ class DelayModel:
         features: pd.DataFrame
     ) -> List[int]:
         return self._model.predict(features).tolist()
+    
+    def load(self):
+        self._model = load('./challenge/model.joblib')
